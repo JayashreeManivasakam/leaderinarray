@@ -1,0 +1,45 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Leader {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int size = sc.nextInt();
+        int array[] = new int[size];
+        for(int i=0;i< array.length;i++)
+        {
+            array[i] = sc.nextInt();
+        }
+        leaderOfarray(array,size);
+    }
+    public static void leaderOfarray(int array[],int size)
+    {
+        ArrayList<Integer> list = new ArrayList<>();
+        int min =Integer.MIN_VALUE;
+        for(int i=size-1;i>=0;i--)
+        {
+            if(array[i]>=min)
+            {
+                min=array[i];
+                list.add(array[i]);
+            }
+        }
+        
+        reverseArray(list);
+    }
+    public static void reverseArray(ArrayList list)
+    {
+        int i=0;
+        int j=list.size()-1;
+        while(i<j)
+        {
+            int temp = (int) list.get(i);
+            list.set(i,list.get(j));
+            list.set(j,temp);
+            i++;
+            j--;
+        }
+        System.out.println(list);
+    }
+
+}  
